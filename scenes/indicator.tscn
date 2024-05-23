@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhhoc2uvtl3g1"]
+
+[ext_resource type="Script" path="res://scenes/indicator.gd" id="1_8exh4"]
+[ext_resource type="Texture2D" uid="uid://br4bsdaxg5u3h" path="res://gfx/alert_icon.png" id="2_sjsko"]
+
+[node name="Indicator" type="Node2D"]
+script = ExtResource("1_8exh4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_sjsko")

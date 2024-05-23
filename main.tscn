@@ -1,0 +1,227 @@
+[gd_scene load_steps=29 format=3 uid="uid://61uh5ysmek4g"]
+
+[ext_resource type="Texture2D" uid="uid://vt75dy1un4yk" path="res://gfx/map.png" id="1_ignks"]
+[ext_resource type="PackedScene" uid="uid://bxbdmxruyhtcc" path="res://scenes/Tower.tscn" id="5_6vrun"]
+[ext_resource type="PackedScene" uid="uid://ddesjprhlpsuo" path="res://scenes/Wall.tscn" id="6_0ngmk"]
+[ext_resource type="Texture2D" uid="uid://dktv5k32ux48r" path="res://gfx/core.png" id="6_g5nov"]
+[ext_resource type="PackedScene" uid="uid://cdfrve7u6vlhk" path="res://scenes/Fort.tscn" id="7_p5hyn"]
+[ext_resource type="Script" path="res://components/scripts/HealthComponent.gd" id="9_lblkq"]
+[ext_resource type="Script" path="res://components/scripts/HitboxComponent.gd" id="10_m7vsm"]
+[ext_resource type="Script" path="res://ui/scripts/HPLabel.gd" id="11_5fy32"]
+[ext_resource type="Theme" uid="uid://dricqeutsuvn3" path="res://theme.tres" id="12_iwtxj"]
+[ext_resource type="Script" path="res://ui/scripts/ScoreLabel.gd" id="13_hunuc"]
+[ext_resource type="Script" path="res://ui/scripts/InfoLabel.gd" id="14_fbnlx"]
+[ext_resource type="Texture2D" uid="uid://dsc23dr8sp5u4" path="res://gfx/buttons/button_fort.png" id="14_uij3b"]
+[ext_resource type="Texture2D" uid="uid://3hxd2xecllu4" path="res://gfx/buttons/button_fort_hover.png" id="15_og00d"]
+[ext_resource type="Script" path="res://ui/scripts/new_build_button.gd" id="16_qqr5t"]
+[ext_resource type="Texture2D" uid="uid://dtlymn5iyur3h" path="res://gfx/buttons/button_tower.png" id="20_tu3mp"]
+[ext_resource type="Texture2D" uid="uid://b5cl5schoysya" path="res://gfx/buttons/button_nest.png" id="21_uieca"]
+[ext_resource type="Texture2D" uid="uid://defld080fdrm8" path="res://gfx/buttons/button_tower_hover.png" id="21_xto3r"]
+[ext_resource type="PackedScene" uid="uid://h26i8quj8txa" path="res://scenes/game_start.tscn" id="22_cejoe"]
+[ext_resource type="Texture2D" uid="uid://b72gqsuvqajqk" path="res://gfx/buttons/button_wall.png" id="22_ip1hn"]
+[ext_resource type="Texture2D" uid="uid://cdjxiryfpfnmm" path="res://gfx/buttons/button_nest_hover.png" id="22_vk4uu"]
+[ext_resource type="PackedScene" uid="uid://dsag6xpajui8n" path="res://scenes/Nest.tscn" id="23_cew7o"]
+[ext_resource type="Texture2D" uid="uid://dh4ybvh7nwhaq" path="res://gfx/buttons/button_wall_hover.png" id="23_p04kk"]
+[ext_resource type="Texture2D" uid="uid://t2rphq0xra17" path="res://gfx/buttons/button_silo.png" id="24_icnwo"]
+[ext_resource type="PackedScene" uid="uid://460yusrpvwm2" path="res://scenes/Silo.tscn" id="24_x4oss"]
+[ext_resource type="Texture2D" uid="uid://c8bq21k35yg0n" path="res://gfx/buttons/button_silo_hover.png" id="25_48516"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rlleh"]
+texture = ExtResource("1_ignks")
+texture_region_size = Vector2i(32, 32)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:3/0 = 0
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+0:4/0 = 0
+0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:4/0/physics_layer_0/angular_velocity = 0.0
+1:4/0 = 0
+1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:4/0/physics_layer_0/angular_velocity = 0.0
+2:4/0 = 0
+2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:4/0/physics_layer_0/angular_velocity = 0.0
+0:5/0 = 0
+0:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:5/0/physics_layer_0/angular_velocity = 0.0
+1:5/0 = 0
+1:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:5/0/physics_layer_0/angular_velocity = 0.0
+2:5/0 = 0
+2:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:5/0/physics_layer_0/angular_velocity = 0.0
+3:5/0 = 0
+3:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:5/0/physics_layer_0/angular_velocity = 0.0
+4:5/0 = 0
+4:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:5/0/physics_layer_0/angular_velocity = 0.0
+5:5/0 = 0
+5:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:5/0/physics_layer_0/angular_velocity = 0.0
+0:6/0 = 0
+0:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:6/0/physics_layer_0/angular_velocity = 0.0
+0:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+5:6/0 = 0
+5:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:6/0/physics_layer_0/angular_velocity = 0.0
+5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:7/0 = 0
+5:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:7/0/physics_layer_0/angular_velocity = 0.0
+7:5/0 = 0
+7:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:5/0/physics_layer_0/angular_velocity = 0.0
+8:5/0 = 0
+8:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:5/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+0:7/0 = 0
+0:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:7/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_qgbgt"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/6 = SubResource("TileSetAtlasSource_rlleh")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lf85f"]
+size = Vector2(64, 648)
+
+[node name="main" type="Node2D" groups=["tower"]]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_qgbgt")
+rendering_quadrant_size = 32
+format = 2
+layer_0/name = "ground"
+layer_0/tile_data = PackedInt32Array(917504, 6, 6, 917505, 6, 6, 917506, 6, 6, 917507, 6, 6, 917508, 6, 6, 917509, 6, 6, 917539, 6, 6, 917538, 6, 6, 917537, 6, 6, 917536, 6, 6, 917535, 6, 6, 917534, 6, 6, 917533, 6, 6, 917532, 6, 6, 917531, 6, 6, 917530, 6, 6, 917529, 6, 6, 917528, 6, 6, 917527, 6, 6, 917526, 6, 6, 917525, 6, 6, 917524, 6, 6, 917523, 6, 6, 917522, 6, 6, 917521, 6, 6, 917520, 6, 6, 917519, 6, 6, 917518, 6, 6, 917517, 6, 6, 917516, 6, 6, 917515, 6, 6, 917514, 6, 6, 917513, 6, 6, 917512, 6, 6, 917511, 6, 6, 917510, 6, 6, 983040, 65542, 0, 1245219, 65542, 1, 1245218, 65542, 0, 1245217, 65542, 1, 1245216, 6, 0, 1245215, 65542, 1, 1245214, 6, 1, 1245213, 6, 0, 1245212, 65542, 0, 1245211, 6, 1, 1245210, 6, 0, 1245209, 65542, 0, 1245208, 65542, 1, 1245207, 65542, 1, 1245206, 65542, 1, 1245205, 65542, 1, 1245204, 65542, 1, 1245203, 65542, 0, 1245202, 65542, 0, 1245201, 65542, 0, 1245200, 6, 0, 1245199, 65542, 0, 1245198, 6, 0, 1245197, 6, 1, 1245196, 65542, 0, 1245195, 65542, 1, 1245194, 6, 0, 1245193, 6, 0, 1245192, 6, 1, 1245191, 65542, 0, 1245190, 65542, 0, 1245189, 6, 1, 1245188, 6, 1, 1245187, 65542, 0, 1245186, 65542, 1, 1245185, 65542, 0, 1245184, 65542, 1, 1179648, 6, 1, 1179649, 6, 1, 1179650, 6, 1, 1179651, 65542, 1, 1179652, 6, 0, 1179653, 6, 0, 1179654, 65542, 0, 1179655, 6, 0, 1179656, 6, 1, 1179657, 6, 0, 1179658, 6, 1, 1179659, 6, 0, 1179660, 65542, 0, 1179661, 65542, 0, 1179662, 6, 0, 1179663, 65542, 0, 1179664, 65542, 1, 1179665, 6, 1, 1179666, 65542, 1, 1179667, 65542, 0, 1179668, 65542, 0, 1179669, 6, 1, 1179670, 6, 0, 1179671, 6, 0, 1179672, 6, 1, 1179673, 65542, 1, 1179674, 6, 1, 1179675, 6, 0, 1179676, 6, 0, 1179677, 6, 1, 1179678, 6, 1, 1179679, 6, 0, 1179680, 65542, 0, 1179681, 6, 1, 1179682, 65542, 0, 1179683, 6, 1, 1114147, 65542, 1, 1114146, 6, 1, 1114145, 65542, 1, 1114144, 65542, 1, 1114143, 6, 0, 1114142, 6, 1, 1114141, 65542, 0, 1114140, 65542, 0, 1114139, 65542, 1, 1114138, 6, 0, 1114137, 6, 0, 1114136, 6, 0, 1114135, 65542, 0, 1114134, 65542, 0, 1114133, 65542, 1, 1114132, 65542, 1, 1114131, 65542, 0, 1114130, 65542, 1, 1114129, 6, 0, 1114128, 6, 0, 1114127, 6, 1, 1114126, 65542, 0, 1114125, 65542, 1, 1114124, 65542, 0, 1114123, 6, 0, 1114122, 65542, 1, 1114121, 65542, 0, 1114120, 6, 0, 1114119, 6, 0, 1114118, 6, 1, 1114117, 6, 1, 1114116, 6, 1, 1114115, 6, 0, 1114114, 6, 0, 1114113, 6, 0, 1114112, 6, 0, 1048576, 65542, 0, 1048577, 6, 0, 1048578, 65542, 0, 1048579, 65542, 0, 1048580, 6, 0, 1048581, 6, 0, 1048582, 65542, 0, 1048583, 65542, 0, 1048584, 6, 0, 1048585, 6, 0, 1048586, 6, 1, 1048587, 65542, 0, 1048588, 6, 0, 1048589, 6, 0, 1048590, 65542, 1, 1048591, 65542, 1, 1048592, 65542, 1, 1048593, 6, 1, 1048594, 6, 0, 1048595, 65542, 1, 1048596, 65542, 1, 1048597, 6, 0, 1048598, 65542, 0, 1048599, 6, 0, 1048600, 6, 0, 1048601, 6, 1, 1048602, 6, 0, 1048603, 6, 0, 1048604, 65542, 0, 1048605, 65542, 1, 1048606, 6, 1, 1048607, 65542, 1, 1048608, 65542, 0, 1048609, 65542, 0, 1048610, 6, 1, 1048611, 65542, 1, 983075, 65542, 1, 983074, 65542, 0, 983073, 65542, 1, 983072, 6, 1, 983071, 6, 0, 983070, 65542, 1, 983069, 6, 1, 983068, 6, 1, 983067, 6, 1, 983066, 6, 1, 983065, 65542, 1, 983064, 6, 1, 983063, 6, 0, 983062, 6, 1, 983061, 65542, 0, 983060, 65542, 1, 983059, 6, 0, 983058, 65542, 0, 983057, 6, 1, 983056, 6, 0, 983055, 6, 1, 983054, 65542, 0, 983053, 65542, 0, 983052, 65542, 0, 983051, 65542, 0, 983050, 6, 1, 983049, 65542, 0, 983048, 6, 1, 983047, 65542, 1, 983046, 6, 1, 983045, 65542, 1, 983044, 65542, 1, 983043, 6, 0, 983042, 65542, 1, 983041, 65542, 0, 1310736, 6, 1, 1310739, 6, 0, 1310720, 65542, 1, 1310721, 65542, 1, 1310722, 65542, 0, 1310723, 65542, 0, 1310724, 65542, 0, 1310725, 6, 1, 1310726, 6, 1, 1310727, 6, 1, 1310728, 6, 1, 1310729, 65542, 0, 1310730, 65542, 0, 1310731, 6, 1, 1310732, 6, 1, 1310733, 6, 1, 1310734, 65542, 0, 1310735, 65542, 0, 1310737, 65542, 1, 1310738, 65542, 0, 1310740, 6, 1, 1310741, 6, 1, 1310742, 6, 1, 1310743, 65542, 1, 1310744, 65542, 1, 1310745, 65542, 0, 1310746, 6, 1, 1310747, 6, 0, 1310755, 65542, 1, 1310754, 6, 0, 1310753, 65542, 1, 1310752, 65542, 0, 1310751, 6, 0, 1310750, 6, 1, 1310749, 6, 0, 1310748, 65542, 1, 1376275, 6, 0, 852003, 6, 2, 786467, 6, 2, 720931, 6, 2, 655395, 6, 2, 589859, 6, 2, 524323, 6, 2, 851968, 65542, 2, 786432, 65542, 2, 720896, 65542, 2, 655360, 65542, 2, 589824, 65542, 2, 524288, 65542, 2)
+layer_1/name = "sky"
+layer_1/modulate = Color(1, 1, 1, 0.501961)
+layer_1/navigation_enabled = false
+layer_1/tile_data = PackedInt32Array()
+
+[node name="BaseHPBox" type="Node2D" parent="." groups=["tower"]]
+position = Vector2(576, 324)
+
+[node name="HealthComponent" type="Node2D" parent="BaseHPBox"]
+position = Vector2(-2, 0)
+script = ExtResource("9_lblkq")
+MAX_HEALTH = 20
+
+[node name="HitboxComponent" type="Area2D" parent="BaseHPBox" node_paths=PackedStringArray("health_component")]
+script = ExtResource("10_m7vsm")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseHPBox/HitboxComponent"]
+shape = SubResource("RectangleShape2D_lf85f")
+
+[node name="Sprite2D" type="Sprite2D" parent="BaseHPBox"]
+position = Vector2(0, 60)
+texture = ExtResource("6_g5nov")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 64.0
+theme = ExtResource("12_iwtxj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme = ExtResource("12_iwtxj")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HPLabel" type="Label" parent="PanelContainer/HBoxContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("health_component")]
+layout_mode = 2
+text = "HP: 20/20"
+vertical_alignment = 1
+script = ExtResource("11_5fy32")
+health_component = NodePath("../../../../../BaseHPBox/HealthComponent")
+
+[node name="ScoreLabel" type="Label" parent="PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Score: 0"
+script = ExtResource("13_hunuc")
+
+[node name="InfoLabel" type="Label" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("14_fbnlx")
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="TowerButton" type="TextureButton" parent="PanelContainer/HBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("20_tu3mp")
+texture_pressed = ExtResource("21_xto3r")
+texture_hover = ExtResource("21_xto3r")
+script = ExtResource("16_qqr5t")
+building = ExtResource("5_6vrun")
+
+[node name="WallButton" type="TextureButton" parent="PanelContainer/HBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("22_ip1hn")
+texture_pressed = ExtResource("23_p04kk")
+texture_hover = ExtResource("23_p04kk")
+script = ExtResource("16_qqr5t")
+building = ExtResource("6_0ngmk")
+
+[node name="FortButton" type="TextureButton" parent="PanelContainer/HBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("14_uij3b")
+texture_pressed = ExtResource("15_og00d")
+texture_hover = ExtResource("15_og00d")
+script = ExtResource("16_qqr5t")
+building = ExtResource("7_p5hyn")
+
+[node name="NestButton" type="TextureButton" parent="PanelContainer/HBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("21_uieca")
+texture_pressed = ExtResource("22_vk4uu")
+texture_hover = ExtResource("22_vk4uu")
+script = ExtResource("16_qqr5t")
+building = ExtResource("23_cew7o")
+
+[node name="SiloButton" type="TextureButton" parent="PanelContainer/HBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("24_icnwo")
+texture_pressed = ExtResource("25_48516")
+texture_hover = ExtResource("25_48516")
+script = ExtResource("16_qqr5t")
+building = ExtResource("24_x4oss")
+
+[node name="GameStart" parent="." instance=ExtResource("22_cejoe")]

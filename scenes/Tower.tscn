@@ -1,0 +1,42 @@
+[gd_scene load_steps=10 format=3 uid="uid://bxbdmxruyhtcc"]
+
+[ext_resource type="Script" path="res://scenes/scripts/Tower.gd" id="1_gtilb"]
+[ext_resource type="PackedScene" uid="uid://bt2wvxpdwu588" path="res://components/SpawnerComponent.tscn" id="1_mt7vr"]
+[ext_resource type="PackedScene" uid="uid://b2ejhhx3j1sxo" path="res://scenes/Bolt.tscn" id="2_ap537"]
+[ext_resource type="PackedScene" uid="uid://bbww6vpkhdsnb" path="res://components/HealthComponent.tscn" id="2_lrfsb"]
+[ext_resource type="PackedScene" uid="uid://c62nwi2euqpih" path="res://components/HitboxComponent.tscn" id="3_4relg"]
+[ext_resource type="Texture2D" uid="uid://vt75dy1un4yk" path="res://gfx/map.png" id="4_0l7vd"]
+[ext_resource type="PackedScene" uid="uid://dgbtdv4rkeml" path="res://components/HealthBarComponent.tscn" id="6_yyjmt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lkub"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tiacr"]
+atlas = ExtResource("4_0l7vd")
+region = Rect2(32, 128, 32, 32)
+
+[node name="Tower" type="Node2D" groups=["tower"]]
+script = ExtResource("1_gtilb")
+caps_top = true
+cost = 5
+desc = "Shoots in a straight line"
+allowed_layers = Array[int]([6, 7, 8, 9, 10])
+
+[node name="SpawnerComponent" parent="." instance=ExtResource("1_mt7vr")]
+scene = ExtResource("2_ap537")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_lrfsb")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_4relg")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_5lkub")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_tiacr")
+
+[node name="HealthBarComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_yyjmt")]
+position = Vector2(0, 13)
+health_component = NodePath("../HealthComponent")
+mode = 0

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwtp23hvaab8n"]
+
+[ext_resource type="Script" path="res://ui/scripts/build_button.gd" id="1_2fcm1"]
+
+[node name="BuildButton" type="Button"]
+script = ExtResource("1_2fcm1")

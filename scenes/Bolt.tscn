@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2ejhhx3j1sxo"]
+
+[ext_resource type="Script" path="res://scenes/scripts/Bolt.gd" id="1_oh2r5"]
+[ext_resource type="Texture2D" uid="uid://vt75dy1un4yk" path="res://gfx/map.png" id="2_bst4i"]
+[ext_resource type="PackedScene" uid="uid://bkqutjn64shx0" path="res://components/DamageComponent.tscn" id="3_4allf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32fu6"]
+atlas = ExtResource("2_bst4i")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bb5tv"]
+size = Vector2(12, 12)
+
+[node name="Bolt" type="Node2D"]
+z_index = 1
+z_as_relative = false
+script = ExtResource("1_oh2r5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_32fu6")
+
+[node name="DamageComponent" parent="." instance=ExtResource("3_4allf")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageComponent"]
+shape = SubResource("RectangleShape2D_bb5tv")

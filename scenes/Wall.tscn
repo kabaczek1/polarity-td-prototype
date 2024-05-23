@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddesjprhlpsuo"]
+
+[ext_resource type="Script" path="res://scenes/scripts/Tower.gd" id="1_rau43"]
+[ext_resource type="PackedScene" uid="uid://bbww6vpkhdsnb" path="res://components/HealthComponent.tscn" id="4_ae3yu"]
+[ext_resource type="PackedScene" uid="uid://c62nwi2euqpih" path="res://components/HitboxComponent.tscn" id="5_pepin"]
+[ext_resource type="Texture2D" uid="uid://vt75dy1un4yk" path="res://gfx/map.png" id="6_c2e5g"]
+[ext_resource type="PackedScene" uid="uid://dgbtdv4rkeml" path="res://components/HealthBarComponent.tscn" id="7_t67ho"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lkub"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tiacr"]
+atlas = ExtResource("6_c2e5g")
+region = Rect2(32, 160, 32, 32)
+
+[node name="Wall" type="Node2D" groups=["tower"]]
+script = ExtResource("1_rau43")
+hp = 6
+key = 50
+desc = "Has a lot of hp, but not much more"
+allowed_layers = Array[int]([6, 7, 8, 9])
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_ae3yu")]
+MAX_HEALTH = 6
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_pepin")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_5lkub")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_tiacr")
+
+[node name="HealthBarComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_t67ho")]
+position = Vector2(0, -13)
+health_component = NodePath("../HealthComponent")
+mode = 0

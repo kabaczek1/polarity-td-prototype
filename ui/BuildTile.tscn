@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgonxckomnftx"]
+
+[ext_resource type="Texture2D" uid="uid://hfvpi727umx3" path="res://gfx/tile_indicator.png" id="1_s2as0"]
+[ext_resource type="Script" path="res://ui/scripts/BuildTile.gd" id="1_sm4uq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3dla"]
+size = Vector2(30, 30)
+
+[node name="BuildTile" type="Node2D"]
+script = ExtResource("1_sm4uq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_s2as0")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_i3dla")

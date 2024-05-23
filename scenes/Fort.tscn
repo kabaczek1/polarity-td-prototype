@@ -1,0 +1,45 @@
+[gd_scene load_steps=10 format=3 uid="uid://cdfrve7u6vlhk"]
+
+[ext_resource type="Script" path="res://scenes/scripts/Tower.gd" id="1_idrd3"]
+[ext_resource type="PackedScene" uid="uid://bt2wvxpdwu588" path="res://components/SpawnerComponent.tscn" id="2_vxnhd"]
+[ext_resource type="PackedScene" uid="uid://g58sskt3ap21" path="res://scenes/Unit.tscn" id="3_rreub"]
+[ext_resource type="PackedScene" uid="uid://bbww6vpkhdsnb" path="res://components/HealthComponent.tscn" id="4_1bf33"]
+[ext_resource type="PackedScene" uid="uid://c62nwi2euqpih" path="res://components/HitboxComponent.tscn" id="5_6vvcl"]
+[ext_resource type="Texture2D" uid="uid://vt75dy1un4yk" path="res://gfx/map.png" id="6_o7e87"]
+[ext_resource type="PackedScene" uid="uid://dgbtdv4rkeml" path="res://components/HealthBarComponent.tscn" id="7_262m6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lkub"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sk18"]
+atlas = ExtResource("6_o7e87")
+region = Rect2(64, 160, 32, 32)
+
+[node name="Fort" type="Node2D" groups=["tower"]]
+script = ExtResource("1_idrd3")
+cost = 15
+hp = 2
+key = 51
+desc = "Creates your own units"
+allowed_layers = Array[int]([6])
+
+[node name="SpawnerComponent" parent="." instance=ExtResource("2_vxnhd")]
+scene = ExtResource("3_rreub")
+wait_time = 3.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_1bf33")]
+MAX_HEALTH = 2
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_6vvcl")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_5lkub")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_8sk18")
+
+[node name="HealthBarComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_262m6")]
+position = Vector2(0, -13)
+health_component = NodePath("../HealthComponent")
+mode = 0

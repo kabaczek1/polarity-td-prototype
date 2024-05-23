@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://460yusrpvwm2"]
+
+[ext_resource type="Script" path="res://scenes/scripts/Tower.gd" id="1_wur64"]
+[ext_resource type="PackedScene" uid="uid://bbww6vpkhdsnb" path="res://components/HealthComponent.tscn" id="2_4cpjv"]
+[ext_resource type="PackedScene" uid="uid://c62nwi2euqpih" path="res://components/HitboxComponent.tscn" id="3_hn3xc"]
+[ext_resource type="Texture2D" uid="uid://vt75dy1un4yk" path="res://gfx/map.png" id="4_mbqvv"]
+[ext_resource type="PackedScene" uid="uid://dgbtdv4rkeml" path="res://components/HealthBarComponent.tscn" id="5_yrxf1"]
+[ext_resource type="Script" path="res://scenes/EnergyChanger.gd" id="6_x1dww"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lkub"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_il06s"]
+atlas = ExtResource("4_mbqvv")
+region = Rect2(0, 160, 32, 32)
+
+[node name="Silo" type="Node2D" groups=["tower"]]
+script = ExtResource("1_wur64")
+cost = 50
+hp = 2
+key = 53
+desc = "Adds 50 energy storage"
+allowed_layers = Array[int]([6, 7, 8, 9])
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_4cpjv")]
+MAX_HEALTH = 6
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_hn3xc")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_5lkub")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_il06s")
+
+[node name="HealthBarComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_yrxf1")]
+position = Vector2(0, -15)
+health_component = NodePath("../HealthComponent")
+mode = 0
+
+[node name="EnergyChanger" type="Node" parent="."]
+script = ExtResource("6_x1dww")

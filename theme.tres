@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dricqeutsuvn3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6byp"]
+bg_color = Color(0, 0, 0, 1)
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_egj85"]
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 0
+vertical = true
+
+[resource]
+MarginContainer/constants/margin_left = 8
+MarginContainer/constants/margin_right = 8
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_s6byp")
+VSeparator/styles/separator = SubResource("StyleBoxLine_egj85")

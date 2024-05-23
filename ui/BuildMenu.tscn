@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm7m2l48255a1"]
+
+[ext_resource type="Script" path="res://ui/scripts/BuildMenu.gd" id="1_2tujc"]
+
+[node name="BuildMenu" type="VBoxContainer"]
+offset_left = 302.0
+offset_top = 85.0
+offset_right = 387.0
+offset_bottom = 149.0
+script = ExtResource("1_2tujc")

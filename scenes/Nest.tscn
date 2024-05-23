@@ -1,0 +1,44 @@
+[gd_scene load_steps=10 format=3 uid="uid://dsag6xpajui8n"]
+
+[ext_resource type="Script" path="res://scenes/scripts/Tower.gd" id="1_w6owp"]
+[ext_resource type="PackedScene" uid="uid://bt2wvxpdwu588" path="res://components/SpawnerComponent.tscn" id="2_5hljn"]
+[ext_resource type="PackedScene" uid="uid://bedqssupdl12u" path="res://scenes/Unit_sky.tscn" id="3_pkrv4"]
+[ext_resource type="PackedScene" uid="uid://bbww6vpkhdsnb" path="res://components/HealthComponent.tscn" id="4_q1ee0"]
+[ext_resource type="PackedScene" uid="uid://c62nwi2euqpih" path="res://components/HitboxComponent.tscn" id="5_jnw7j"]
+[ext_resource type="Texture2D" uid="uid://vt75dy1un4yk" path="res://gfx/map.png" id="6_ou73w"]
+[ext_resource type="PackedScene" uid="uid://dgbtdv4rkeml" path="res://components/HealthBarComponent.tscn" id="7_b36dn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lkub"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sje6j"]
+atlas = ExtResource("6_ou73w")
+region = Rect2(224, 160, 32, 32)
+
+[node name="Nest" type="Node2D" groups=["tower"]]
+script = ExtResource("1_w6owp")
+cost = 30
+key = 52
+desc = "Creates your own flying units"
+allowed_layers = Array[int]([7, 8, 9, 10, 11])
+
+[node name="SpawnerComponent" parent="." instance=ExtResource("2_5hljn")]
+scene = ExtResource("3_pkrv4")
+wait_time = 5.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_q1ee0")]
+MAX_HEALTH = 2
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_jnw7j")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_5lkub")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_sje6j")
+
+[node name="HealthBarComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_b36dn")]
+position = Vector2(0, -13)
+health_component = NodePath("../HealthComponent")
+mode = 0

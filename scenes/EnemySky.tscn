@@ -1,0 +1,53 @@
+[gd_scene load_steps=11 format=3 uid="uid://6rkdm4a2nlk"]
+
+[ext_resource type="Script" path="res://scenes/scripts/Enemy.gd" id="1_bylws"]
+[ext_resource type="Texture2D" uid="uid://vt75dy1un4yk" path="res://gfx/map.png" id="1_w0wa3"]
+[ext_resource type="PackedScene" uid="uid://bbww6vpkhdsnb" path="res://components/HealthComponent.tscn" id="2_cinuc"]
+[ext_resource type="PackedScene" uid="uid://c62nwi2euqpih" path="res://components/HitboxComponent.tscn" id="3_bj2kr"]
+[ext_resource type="PackedScene" uid="uid://bkqutjn64shx0" path="res://components/DamageComponent.tscn" id="5_h804d"]
+[ext_resource type="PackedScene" uid="uid://dgbtdv4rkeml" path="res://components/HealthBarComponent.tscn" id="6_fq8tj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fp8xl"]
+atlas = ExtResource("1_w0wa3")
+region = Rect2(256, 160, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shrv8"]
+size = Vector2(14, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6w767"]
+size = Vector2(14, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0nsk"]
+size = Vector2(16, 6)
+
+[node name="EnemySky" type="CharacterBody2D" groups=["enemy"]]
+modulate = Color(1, 0, 0, 1)
+script = ExtResource("1_bylws")
+score = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+z_as_relative = false
+texture = SubResource("AtlasTexture_fp8xl")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_cinuc")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_bj2kr")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_shrv8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_6w767")
+
+[node name="DamageComponent" parent="." instance=ExtResource("5_h804d")]
+group = "tower"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageComponent"]
+shape = SubResource("RectangleShape2D_l0nsk")
+
+[node name="HealthBarComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_fq8tj")]
+health_component = NodePath("../HealthComponent")
