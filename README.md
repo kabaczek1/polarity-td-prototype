@@ -1,6 +1,5 @@
 Tower defense game made with Godot.
 It was created as an project for a university class.
-Currently rewriting it to add more content. Check out my progress [here](https://github.com/kabaczek1/PolarityTD).
 
 # How to play
 
